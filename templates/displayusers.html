@@ -2,8 +2,13 @@
 
 {% block content %}
 {% for user in users %}
-    <h2>{{ user['title'] }}</h2>
-    <span>{{ user['created'] }}</span>
+    {% if user['id'] != id %}
+    <h2>{{ user['name'] }}</h2>
+    <span>{{ user['email'] }}</span>
+    <a href="{{url_for('chat', id=user['id'], userid=id)}}">
+        <button>Chat</button>
+    </a>
     <hr>
+    {% endif %}
 {% endfor %}
 {% endblock %}

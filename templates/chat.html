@@ -12,6 +12,51 @@ s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.h
 <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
   <i>Loading chat...</i>
 </div>
-<script src="{{url_for('static', filename='stuff.js')}}">
+
+<script>
+  const getUser = async () => {
+    let agent = new Talk.User({
+      id: "{{currentuser['id']}}",
+      name: "{{currentuser['name']}}",
+      email: "{{currentuser['email']}}",
+      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png',
+      welcomeMessage: 'What\'s up?'
+    });
+    return agent;
+}
+
+const getAgent = async () => {
+      let other = new Talk.User({
+      id: "{{other['id']}}",
+      name: "{{other['name']}}",
+      email: "{{other['email']}}",
+      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png',
+      welcomeMessage: 'What\'s up?'
+    });
+    return other;
+}
+
+(
+    async function() {
+    await Talk.ready;
+    let user = await getUser();
+    let agent = await getAgent();
+
+    const session = new Talk.Session({
+        appId: 'tOUrhvBm',
+        me: user,
+    });
+    var conversation = session.getOrCreateConversation(Talk.oneOnOneId(user, agent));
+
+    conversation.setAttributes({
+        welcomeMessages: ["You can start typing your message here and one of our agents will be with you shortly.", "Please do not divulge any of your personal information."]
+    })
+    conversation.setParticipant(user);
+    conversation.setParticipant(agent);
+
+    var inbox = session.createInbox(conversation);
+    inbox.select(conversation);
+    inbox.mount(document.getElementById("talkjs-container"));
+}());
 </script>
 {% endblock %}
