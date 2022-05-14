@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- minified snippet to load TalkJS without delaying your page -->
+<form action="/createUser" method="post">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="mail">Last name:</label><br>
+    <input type="email" id="mail" name="email"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}

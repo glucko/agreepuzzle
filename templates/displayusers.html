@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for user in users %}
+    <h2>{{ user['title'] }}</h2>
+    <span>{{ user['created'] }}</span>
+    <hr>
+{% endfor %}
+{% endblock %}
