@@ -1,4 +1,67 @@
 {% extends 'base.html' %}
+    
 {% block content %}
-<p> go away </p>
+<header class="masthead">
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="col-xl-6">
+            <div class="text-center text-white">
+                <h1 class="mb-5">Work together with people in opposing backgrounds!</h1>
+                <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <div class="d-none" id="submitSuccessMessage">
+                            
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+<!-- Icons Grid-->
+<section class="features-icons bg-light text-center">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                <div class="features-icons-icon d-flex"><i class="bi-window m-auto text-primary"></i></div>
+                <h3>Find new friends</h3>
+                <p class="lead mb-0">Talk on any type of device!</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                <div class="features-icons-icon d-flex"><i class="bi-layers m-auto text-primary"></i></div>
+                <h3>Fully Simple</h3>
+                <p class="lead mb-0">Only 2 steps and you are all set to talk to your new friend!</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                <div class="features-icons-icon d-flex"><i class="bi bi-check-square m-auto text-primary"></i></div>
+                <h3>Easy to Use</h3>
+                <p class="lead mb-0">Simple and easy to use, and many features are available!</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- Image Showcases-->
+<section class="showcase">
+<div class="container-fluid p-0">
+    <div class="row g-0">
+        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url({{url_for('static', filename='image1.png')}})"></div>
+        <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h2>Find New friends</h2>
+            <p class="lead mb-0">Find new friends online with similar or different interests.</p>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-lg-6 text-white showcase-img" style="background-image: url({{url_for('static', filename='image2.jpg')}})"></div>
+        <div class="col-lg-6 my-auto showcase-text">
+            <h2>Debate with people</h2>
+            <p class="lead mb-0">Debate topics that with other people with opposing ideas</p>
+        </div>
+    </div>
+</div>
+</section>
 {% endblock %}

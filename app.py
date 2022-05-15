@@ -1,9 +1,13 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
 import sqlite3
+from flask_assets import Environment, Bundle
 from werkzeug.exceptions import abort
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'asdfasdfwerqewgfgzvzxc'
+assets = Environment(app)
 
+#TODO: fix site, add new pages, add interests, add login
 @app.route('/')
 def index():
     return render_template('index.html')
