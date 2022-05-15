@@ -19,8 +19,7 @@ s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.h
       id: "{{currentuser['id']}}",
       name: "{{currentuser['name']}}",
       email: "{{currentuser['email']}}",
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png',
-      welcomeMessage: 'What\'s up?'
+      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png'
     });
     return agent;
 }
@@ -30,8 +29,7 @@ const getAgent = async () => {
       id: "{{other['id']}}",
       name: "{{other['name']}}",
       email: "{{other['email']}}",
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png',
-      welcomeMessage: 'What\'s up?'
+      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/72/Default-welcomer.png'
     });
     return other;
 }
@@ -48,8 +46,17 @@ const getAgent = async () => {
     });
     var conversation = session.getOrCreateConversation(Talk.oneOnOneId(user, agent));
 
+    const prompts = ["How would you change the world?",
+    "What do you feel strongly about?",
+    "What do you think about the current state of the world?",
+    "What do you think about the future?",
+    "If you could change anything about the world, what would you change?"];
+    const prompt = prompts[Math.floor(Math.random() * prompts.length)];
+    
     conversation.setAttributes({
-        welcomeMessages: ["You can start typing your message here and one of our agents will be with you shortly.", "Please do not divulge any of your personal information."]
+        welcomeMessages: ["Welcome to Agree to Disagree!", 
+        "Try playing a game together like skribbl.io, or discuss the prompt",
+        prompt]
     })
     conversation.setParticipant(user);
     conversation.setParticipant(agent);

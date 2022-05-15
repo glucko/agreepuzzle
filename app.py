@@ -19,7 +19,8 @@ def createuser():
     conn = connectDB()
     name = request.form['name']
     email = request.form['email']
-    conn.execute("INSERT INTO USERS (EMAIL,NAME) VALUES (?,?)",(email, name));
+    interests = request.form['interests']
+    conn.execute("INSERT INTO USERS (EMAIL,NAME, INTERESTS) VALUES (?,?, ?)",(email, name, interests));
     conn.commit()
     conn.close()
     return redirect(url_for('displayusers'))
@@ -41,12 +42,14 @@ def getUser():
     user = {
       'id': "",
       'name': "",
-      'email': ""
+      'email': "",
+      'interests': ""
     }
     for row in cursor:
       user['id'] = row[0]
       user['email'] = row[1]
       user['name'] = row[2]
+      user['interests'] = row[3]
     conn.close()
     response = jsonify(user)
     

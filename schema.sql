@@ -3,5 +3,6 @@ CREATE TABLE users
          (
          id INTEGER PRIMARY KEY AUTOINCREMENT,
          email CHAR(100) NOT NULL,
-         name CHAR(50) NOT NULL
+         name CHAR(50) NOT NULL,
+         interests TEXT NOT NULL
          );
