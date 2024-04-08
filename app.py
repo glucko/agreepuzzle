@@ -2,9 +2,10 @@ from flask import Flask, render_template, request, url_for, flash, redirect
 import sqlite3
 from flask_assets import Environment, Bundle
 from werkzeug.exceptions import abort
+from os import environ
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'asdfasdfwerqewgfgzvzxc'
+app.config['SECRET_KEY'] = environ['SECRET_KEY']
 assets = Environment(app)
 
 #TODO: fix site, add new pages, add interests, add login
